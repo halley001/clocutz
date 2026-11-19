@@ -1,0 +1,17 @@
+# Local Claude Code / editor settings
+.claude/
+.vscode/
+.idea/
+
+# Netlify / Vercel local folders
+.netlify/
+.vercel/
+
+# OS junk
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Logs & temp
+*.log
+*.tmp
