@@ -201,6 +201,22 @@ input[aria-invalid="true"] { border-color: var(--red-2); }
 .ticket-note { color: #d4d4d8; font-size: 14px; }
 .ticket-note a { color: var(--red-2); }
 
+/* SHOP */
+.shop {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: stretch;
+  margin: 80px 0 0; scroll-margin-top: 80px;
+}
+.eyebrow { color: var(--red-2); text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600; }
+.shop h2 { font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(34px, 4.5vw, 48px); line-height: 1.05; margin: 6px 0 10px; }
+.shop h2 em { font-style: normal; color: var(--red); }
+.shop p { color: #d4d4d8; margin: 0 0 14px; }
+.rating span { color: var(--gold); letter-spacing: 2px; }
+.shop-list { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 10px; }
+.shop-list li { display: grid; grid-template-columns: 90px 1fr; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.shop-list b { color: var(--muted); font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; padding-top: 2px; }
+.shop-list a { color: var(--text); }
+.shop-map { width: 100%; min-height: 360px; border: 1px solid var(--line); border-radius: 20px; background: var(--card); }
+
 /* CONTACT */
 .contact {
   display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
@@ -222,6 +238,8 @@ footer .fine { font-size: 12px; opacity: .75; }
   .hero-art img { transform: none; }
   .facts { grid-template-columns: 1fr 1fr; }
   .days { grid-template-columns: repeat(3, 1fr); }
+  .shop { grid-template-columns: 1fr; }
+  .shop-map { min-height: 300px; }
 }
 @media (max-width: 560px) {
   .nav nav { gap: 14px; }
