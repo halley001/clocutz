@@ -4,13 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Clocutz Barber Supply — Coming Soon</title>
-  <meta name="description" content="Clippers, blades, disinfectants, capes and everything a barbershop in Cameroon needs. Order on WhatsApp from Clocutz in Buea." />
+  <meta name="description" content="A coming-soon preview of a Clocutz barber supply store: clippers, blades, disinfectants, capes and everyday barbershop essentials." />
   <link rel="canonical" href="https://shop.clocutz.org/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Clocutz" />
   <meta property="og:url" content="https://shop.clocutz.org/" />
   <meta property="og:title" content="Clocutz Barber Supply — Coming Soon" />
-  <meta property="og:description" content="Everything a barbershop needs: clippers, blades, hygiene and styling products. Order on WhatsApp." />
+  <meta property="og:description" content="Coming soon: a preview of barbershop essentials, from clippers and blades to hygiene and styling products." />
   <meta property="og:image" content="https://clocutz.org/assets/flyer.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#0b0b0d" />
@@ -63,9 +63,6 @@
     h1 { font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(48px, 8vw, 92px); line-height: .95; letter-spacing: 1px; margin: 10px 0 16px; }
     h1 em { font-style: normal; color: var(--red); }
     .lede { color: #d4d4d8; font-size: 18px; max-width: 40em; margin: 0 0 22px; }
-    .perks { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
-    .perks li { padding: 7px 12px; border: 1px solid var(--line); border-radius: 99px; font-size: 14px; color: #d4d4d8; background: var(--bg-2); }
-    .perks b { color: var(--text); }
 
     /* STARTER KIT */
     .kit {
@@ -205,8 +202,7 @@
     <div class="wrap">
       <a class="brand" href="https://shop.clocutz.org/">CLO<span>CUTZ</span><small>Barber Supply</small></a>
       <nav class="nav-links">
-        <a href="https://clocutz.org/">Book a cut</a>
-        <a href="https://wa.me/237678625055" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://clocutz.org/">Haircuts</a>
       </nav>
     </div>
   </header>
@@ -216,12 +212,7 @@
       <span class="soon-pill" id="soonPill" hidden><i></i>Coming soon</span>
       <span class="eyebrow">Barber supply · Buea</span>
       <h1>EQUIP YOUR<br /><em>BARBERSHOP.</em></h1>
-      <p class="lede">Clippers, blades, disinfectants, capes and finishing products, picked by Ola Clovis from what a working barbershop in Cameroon actually uses every day.</p>
-      <ul class="perks">
-        <li><b>Pickup</b> at Clocutz Magic Touch, Buea</li>
-        <li><b>Delivery</b> across Cameroon</li>
-        <li><b>Pay</b> with MTN MoMo, Orange Money or cash</li>
-      </ul>
+      <p class="lede">Clippers, blades, disinfectants, capes and finishing products: the everyday essentials of a working barbershop in Cameroon.</p>
     </section>
 
     <section class="kit">
@@ -240,7 +231,7 @@
     <div id="catalogue"></div>
 
     <footer>
-      <p>Can't find something? <a href="https://wa.me/237678625055" target="_blank" rel="noopener">Ask us on WhatsApp</a>. We source for barbers across Cameroon.</p>
+      <p>This store isn't open yet. For haircuts, visit <a href="https://clocutz.org/">clocutz.org</a>.</p>
       <p>Follow <strong>@Clocutz</strong> on Facebook, Instagram, TikTok &amp; YouTube.</p>
       <p class="credit">Powered by <a href="https://hartsdigitalhub.com/" target="_blank" rel="noopener">h@rts</a></p>
     </footer>
@@ -401,7 +392,7 @@
       const price = COMING_SOON ? "" : p.price != null ? `<span class="price">${fcfa(p.price)}</span>` : `<span class="price ask">Ask for price</span>`;
       return `<article class="card">
         <div class="icon">${icon(p.cat)}</div>
-        ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
+        ${p.badge && !COMING_SOON ? `<span class="badge">${p.badge}</span>` : ""}
         <h3>${esc(p.name)}</h3>
         <p>${esc(p.desc)}</p>
         <div class="card-foot">${price}<span data-ctrl="${p.id}">${controlFor(p)}</span></div>
@@ -418,7 +409,7 @@
         if (!items.length) continue;
         html += `<h2 class="section-title">${c.label}</h2><div class="grid">${items.map(card).join("")}</div>`;
       }
-      $("catalogue").innerHTML = html || `<p class="empty">Nothing matches "${esc(query)}". <a href="https://wa.me/${WHATSAPP}" target="_blank" rel="noopener">Ask us on WhatsApp</a> and we'll find it.</p>`;
+      $("catalogue").innerHTML = html || `<p class="empty">Nothing matches "${esc(query)}".</p>`;
     }
 
     function refreshControls() {
@@ -476,8 +467,7 @@
 
     $("addKit").addEventListener("click", () => {
       if (COMING_SOON) {
-        const msg = "Hello Clocutz! Please let me know when the barber supply shop opens.";
-        window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
+        location.href = "https://clocutz.org/#book";
         return;
       }
       for (const p of PRODUCTS) if (p.kit && !cart[p.id]) cart[p.id] = 1;
@@ -523,9 +513,9 @@
 
     if (COMING_SOON) {
       $("soonPill").hidden = false;
-      $("kitTitle").textContent = "Opening soon";
-      $("kitText").textContent = "Here's a preview of what we'll stock. Message us on WhatsApp and we'll tell you the moment the shop opens, or ask about anything you need now.";
-      $("addKit").textContent = "Notify me on WhatsApp";
+      $("kitTitle").textContent = "Coming soon";
+      $("kitText").textContent = "This is a preview of what a Clocutz barber supply store could stock. It isn't open yet, so nothing can be ordered. Want a haircut instead?";
+      $("addKit").textContent = "Book a haircut";
     }
 
     renderCats();

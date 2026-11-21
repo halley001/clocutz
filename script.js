@@ -174,49 +174,26 @@ function updateSummary() {
 const cleanPhone = (v) => v.replace(/[^\d+]/g, "");
 const validPhone = (v) => cleanPhone(v).replace(/\D/g, "").length >= 9;
 
-function buildMessage(b) {
+// A plain enquiry: it asks whether a time is free and doesn't claim a booking.
+function buildMessage(r) {
   return [
-    `Hello Clocutz! I'd like to book a haircut during the 120-hour record attempt.`,
+    `Hello Clocutz! I'd like to get a haircut during the 120-hour record attempt at Molyko Stadium.`,
     ``,
-    `Booking code: ${b.code}`,
-    `Name: ${b.name}`,
-    `Phone: ${b.phone}`,
-    `Day: ${fmtDayLong.format(b.slot)}`,
-    `Time: ${slotLabel(b.slot)} (WAT)`,
-    b.note ? `Note: ${b.note}` : null,
+    `Is this time available?`,
+    `${fmtDayLong.format(r.slot)}, ${slotLabel(r.slot)} (WAT)`,
     ``,
-    `Venue: Molyko Stadium, Buea`,
+    `Name: ${r.name}`,
+    `Phone: ${r.phone}`,
+    r.note ? `Note: ${r.note}` : null,
   ]
     .filter((l) => l !== null)
     .join("\n");
 }
 
-const waLink = (b) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(buildMessage(b))}`;
+const waLink = (r) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(buildMessage(r))}`;
 
-const STORE_KEY = "clocutz-booking";
-const store = {
-  get() {
-    try { return JSON.parse(localStorage.getItem(STORE_KEY)); } catch { return null; }
-  },
-  set(v) {
-    try { localStorage.setItem(STORE_KEY, JSON.stringify(v)); } catch {}
-  },
-  clear() {
-    try { localStorage.removeItem(STORE_KEY); } catch {}
-  },
-};
-
-function showTicket(b) {
-  $("tCode").textContent = b.code;
-  $("tName").textContent = b.name;
-  $("tPhone").textContent = b.phone;
-  $("tDay").textContent = fmtDayLong.format(b.slot);
-  $("tTime").textContent = slotLabel(b.slot) + " WAT";
-  $("tResend").href = waLink(b);
-  $("tResend").target = "_blank";
-  $("tResend").rel = "noopener";
-  $("ticketWrap").hidden = false;
-}
+// Clear any booking ticket saved by the earlier version of this page.
+try { localStorage.removeItem("clocutz-booking"); } catch {}
 
 $("bookingForm").addEventListener("submit", (e) => {
   e.preventDefault();
@@ -239,22 +216,7 @@ $("bookingForm").addEventListener("submit", (e) => {
   if (!validPhone(phone)) return (err.textContent = "Please enter a valid phone number."), $("phone").focus();
   err.textContent = "";
 
-  const booking = {
-    code: "#CLZ-" + Math.floor(1000 + Math.random() * 9000),
-    name,
-    phone,
-    note,
-    slot: state.slot,
-  };
-  store.set(booking);
-  showTicket(booking);
-  window.open(waLink(booking), "_blank", "noopener");
-  $("ticketWrap").scrollIntoView({ behavior: "smooth", block: "center" });
-});
-
-$("tClear").addEventListener("click", () => {
-  store.clear();
-  $("ticketWrap").hidden = true;
+  window.open(waLink({ name, phone, note, slot: state.slot }), "_blank", "noopener");
 });
 
 /* ---------- Init ---------- */
@@ -266,7 +228,7 @@ if (firstOpenDay) selectDay(firstOpenDay.key);
 else {
   renderDays();
   renderSlots();
-  $("slotHint").textContent = "Bookings are closed. Thank you for supporting Clocutz!";
+  $("slotHint").textContent = "The marathon has ended. Thank you for supporting Clocutz!";
 }
 
 // Refresh availability every minute so passed slots grey out.
@@ -276,6 +238,3 @@ setInterval(() => {
   renderSlots();
   updateSummary();
 }, 60e3);
-
-const saved = store.get();
-if (saved && saved.slot + CONFIG.slotMinutes * MIN > now()) showTicket(saved);
