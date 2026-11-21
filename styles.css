@@ -67,22 +67,7 @@ main, footer { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48
   margin: 18px 0 18px;
 }
 .hero h1 em { font-style: normal; color: var(--red); }
-.lede { color: #d4d4d8; font-size: 18px; max-width: 34em; margin: 0 0 28px; }
-
-.clock {
-  background: linear-gradient(180deg, var(--card), var(--bg-2));
-  border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 20px 22px; max-width: 460px;
-}
-.clock-row { display: flex; gap: 14px; }
-.clock-row div { flex: 1; text-align: center; }
-.clock-row span { display: block; font-family: Anton, sans-serif; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums; }
-.clock-row small { color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: 1.5px; }
-.clock-caption { text-align: center; color: var(--muted); margin: 8px 0 14px; font-size: 14px; }
-.progress { height: 8px; background: #26262c; border-radius: 99px; overflow: hidden; }
-.bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--red-deep), var(--red), var(--red-2)); transition: width .6s ease; }
-.progress-meta { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
-.progress-meta span { color: var(--text); font-weight: 600; }
+.lede { color: #d4d4d8; font-size: 18px; max-width: 34em; margin: 0; }
 
 .cta-row { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
 .btn {
@@ -248,7 +233,6 @@ footer .credit a:hover { color: var(--red-2); }
   .nav nav { gap: 14px; }
   .nav nav a { font-size: 14px; }
   .lede { font-size: 16px; }
-  .clock-row span { font-size: 36px; }
   .fields { grid-template-columns: 1fr; }
   .summary { flex-direction: column; align-items: stretch; }
   .summary .btn { width: 100%; }

@@ -28,7 +28,6 @@ const nowOverride = (() => {
 const now = () => Date.now() + (nowOverride || 0);
 
 const $ = (id) => document.getElementById(id);
-const pad = (n) => String(n).padStart(2, "0");
 
 const fmtTime = new Intl.DateTimeFormat("en-GB", { timeZone: CONFIG.timeZone, hour: "2-digit", minute: "2-digit", hour12: false });
 const fmtDayLong = new Intl.DateTimeFormat("en-GB", { timeZone: CONFIG.timeZone, weekday: "long", day: "numeric", month: "long" });
@@ -40,40 +39,12 @@ const watHour = (t) => new Date(t + HOUR).getUTCHours();
 // Key for the WAT calendar day of a timestamp.
 const watDayKey = (t) => new Date(t + HOUR).toISOString().slice(0, 10);
 
-/* ---------- Live clock ---------- */
-function tickClock() {
+/* ---------- Live status badge ---------- */
+function updateStatus() {
   const t = now();
-  const total = END - START;
-  const elapsed = Math.min(Math.max(t - START, 0), total);
-  const pill = $("livePill");
-
-  let shown, caption, label;
-  if (t < START) {
-    shown = START - t;
-    caption = "until the marathon starts";
-    label = "STARTING SOON";
-    pill.classList.add("off");
-  } else if (t >= END) {
-    shown = total;
-    caption = "of cutting. Marathon complete!";
-    label = "COMPLETED";
-    pill.classList.add("off");
-  } else {
-    shown = elapsed;
-    caption = "of cutting completed so far";
-    label = "LIVE NOW";
-    pill.classList.remove("off");
-  }
-
-  $("cH").textContent = pad(Math.floor(shown / HOUR));
-  $("cM").textContent = pad(Math.floor((shown % HOUR) / MIN));
-  $("cS").textContent = pad(Math.floor((shown % MIN) / 1000));
-  $("clockCaption").textContent = caption;
-  $("liveLabel").textContent = label;
-
-  const pct = (elapsed / total) * 100;
-  $("progressBar").style.width = pct.toFixed(2) + "%";
-  $("progressPct").textContent = (pct < 10 ? pct.toFixed(1) : Math.floor(pct)) + "%";
+  const live = t >= START && t < END;
+  $("liveLabel").textContent = t < START ? "STARTING SOON" : t >= END ? "COMPLETED" : "LIVE NOW";
+  $("livePill").classList.toggle("off", !live);
 }
 
 /* ---------- Slots ---------- */
@@ -287,8 +258,8 @@ $("tClear").addEventListener("click", () => {
 });
 
 /* ---------- Init ---------- */
-tickClock();
-setInterval(tickClock, 1000);
+updateStatus();
+setInterval(updateStatus, 60e3);
 
 const firstOpenDay = days.find((d) => d.slots.some(isOpen));
 if (firstOpenDay) selectDay(firstOpenDay.key);
