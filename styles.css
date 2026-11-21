@@ -230,6 +230,9 @@ input[aria-invalid="true"] { border-color: var(--red-2); }
 footer { padding-bottom: 40px; color: var(--muted); font-size: 14px; text-align: center; }
 footer strong { color: var(--text); }
 footer .fine { font-size: 12px; opacity: .75; }
+footer .credit { margin-top: 18px; font-size: 13px; letter-spacing: .5px; }
+footer .credit a { color: var(--text); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--red); padding-bottom: 1px; }
+footer .credit a:hover { color: var(--red-2); }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
