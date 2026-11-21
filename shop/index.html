@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Clocutz Store — Coming Soon</title>
-  <meta name="description" content="The official Clocutz online store is coming soon. Merch and grooming products from Ola Clovis and the Clocutz team in Buea." />
+  <title>Clocutz Barber Supply — Coming Soon</title>
+  <meta name="description" content="Clippers, blades, disinfectants, capes and everything a barbershop in Cameroon needs. Order on WhatsApp from Clocutz in Buea." />
   <link rel="canonical" href="https://shop.clocutz.org/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Clocutz" />
   <meta property="og:url" content="https://shop.clocutz.org/" />
-  <meta property="og:title" content="Clocutz Store — Coming Soon" />
-  <meta property="og:description" content="Official Clocutz merch and grooming products. Coming soon." />
+  <meta property="og:title" content="Clocutz Barber Supply — Coming Soon" />
+  <meta property="og:description" content="Everything a barbershop needs: clippers, blades, hygiene and styling products. Order on WhatsApp." />
   <meta property="og:image" content="https://clocutz.org/assets/flyer.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#0b0b0d" />
-  <!-- Icons use absolute URLs on the main domain, because shop.clocutz.org is served from the /shop folder. -->
+  <!-- Absolute URLs: shop.clocutz.org is served from the /shop folder, so relative paths would miss. -->
   <link rel="icon" href="https://clocutz.org/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="https://clocutz.org/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,117 +22,515 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0b0b0d; --card: #1a1a1f; --line: #2a2a31;
+      --bg: #0b0b0d; --bg-2: #141417; --card: #1a1a1f; --line: #2a2a31;
       --text: #f4f4f5; --muted: #a1a1aa;
-      --red: #e11d2a; --red-2: #ff3b47; --red-deep: #5c0a10;
+      --red: #e11d2a; --red-2: #ff3b47; --red-deep: #5c0a10; --gold: #f5c542;
+      --radius: 14px;
     }
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
     body {
-      margin: 0; min-height: 100%;
-      display: flex; flex-direction: column;
+      margin: 0;
       background:
-        radial-gradient(900px 500px at 85% -10%, rgba(225, 29, 42, .32), transparent 60%),
-        radial-gradient(700px 500px at -10% 110%, rgba(92, 10, 16, .6), transparent 60%),
+        radial-gradient(900px 500px at 85% -10%, rgba(225, 29, 42, .28), transparent 60%),
+        radial-gradient(700px 500px at -10% 40%, rgba(92, 10, 16, .5), transparent 60%),
         var(--bg);
       color: var(--text);
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       line-height: 1.5; -webkit-font-smoothing: antialiased;
+      padding-bottom: 96px;
     }
     a { color: inherit; }
-    header, main, footer { width: 100%; max-width: 880px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 40px); }
-    header { padding-top: 22px; padding-bottom: 22px; }
+    button { font: inherit; color: inherit; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(11, 11, 13, .85); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
     .brand { font-family: Anton, sans-serif; font-size: 24px; letter-spacing: 1px; text-decoration: none; }
     .brand span { color: var(--red); }
+    .brand small { font-family: Inter, sans-serif; font-size: 12px; color: var(--muted); letter-spacing: 1.5px; margin-left: 8px; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 18px; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; }
+    .nav-links a:hover { color: var(--text); }
 
-    main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-top: 24px; padding-bottom: 48px; }
-    .pill {
-      align-self: flex-start;
-      display: inline-flex; align-items: center; gap: 8px;
+    /* HERO */
+    .hero { padding: 48px 0 28px; }
+    .eyebrow { color: var(--red-2); text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; font-weight: 600; }
+    h1 { font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(48px, 8vw, 92px); line-height: .95; letter-spacing: 1px; margin: 10px 0 16px; }
+    h1 em { font-style: normal; color: var(--red); }
+    .lede { color: #d4d4d8; font-size: 18px; max-width: 40em; margin: 0 0 22px; }
+    .perks { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .perks li { padding: 7px 12px; border: 1px solid var(--line); border-radius: 99px; font-size: 14px; color: #d4d4d8; background: var(--bg-2); }
+    .perks b { color: var(--text); }
+
+    /* STARTER KIT */
+    .kit {
+      display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+      margin: 18px 0 28px; padding: 22px 24px; border-radius: 18px;
+      background: linear-gradient(120deg, var(--red-deep), #1a0507 70%); border: 1px solid #3a0a0f;
+    }
+    .kit h2 { font-family: Anton, sans-serif; font-weight: 400; font-size: 30px; letter-spacing: .5px; margin: 0; }
+    .kit p { margin: 4px 0 0; color: #e4e4e7; max-width: 46em; font-size: 15px; }
+
+    /* TOOLBAR */
+    .toolbar { position: sticky; top: 60px; z-index: 10; background: rgba(11, 11, 13, .92); backdrop-filter: blur(10px); padding: 12px 0; margin-bottom: 8px; }
+    .search {
+      width: 100%; background: var(--bg-2); border: 1px solid var(--line); color: var(--text);
+      border-radius: 12px; padding: 12px 14px; font: 16px Inter, sans-serif; margin-bottom: 10px;
+    }
+    .search::placeholder { color: #5f5f6a; }
+    .cats { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+    .cats::-webkit-scrollbar { display: none; }
+    .cats button {
+      flex: none; border: 1px solid var(--line); background: transparent; color: var(--muted);
+      padding: 8px 14px; border-radius: 99px; font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap;
+    }
+    .cats button[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+
+    /* GRID */
+    .section-title { font-family: Anton, sans-serif; font-weight: 400; font-size: 28px; letter-spacing: .5px; margin: 28px 0 14px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+    .card {
+      display: flex; flex-direction: column; gap: 10px;
+      background: linear-gradient(180deg, var(--card), var(--bg-2));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 18px;
+    }
+    .card .icon {
+      width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center;
+      background: rgba(225, 29, 42, .12); color: var(--red-2);
+    }
+    .card .icon svg { width: 26px; height: 26px; }
+    .card h3 { margin: 0; font-size: 17px; line-height: 1.3; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; flex: 1; }
+    .badge { align-self: flex-start; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); }
+    .card-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 6px; }
+    .price { font-weight: 700; font-size: 16px; }
+    .price.ask { color: var(--muted); font-weight: 500; font-size: 14px; }
+    .add {
+      border: 1px solid var(--red); background: transparent; color: var(--text);
+      border-radius: 10px; padding: 9px 14px; font-weight: 600; font-size: 14px; cursor: pointer;
+    }
+    .add:hover { background: var(--red); }
+    .qty { display: inline-flex; align-items: center; border: 1px solid var(--red); border-radius: 10px; overflow: hidden; }
+    .qty button { background: var(--red); border: 0; width: 34px; height: 36px; font-size: 18px; font-weight: 700; cursor: pointer; color: #fff; }
+    .qty span { min-width: 34px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .soon-tag { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); border: 1px dashed var(--line); border-radius: 8px; padding: 6px 10px; }
+    .soon-pill {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; margin-right: 10px;
       padding: 6px 12px; border-radius: 999px;
       background: rgba(225, 29, 42, .15); border: 1px solid rgba(225, 29, 42, .5);
       font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
     }
-    .pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--red-2); }
-    h1 {
-      font-family: Anton, sans-serif; font-weight: 400;
-      font-size: clamp(60px, 13vw, 132px); line-height: .9; letter-spacing: 1px;
-      margin: 20px 0 20px;
-    }
-    h1 em { font-style: normal; color: var(--red); }
-    .lede { font-size: clamp(17px, 2.2vw, 20px); color: #d4d4d8; max-width: 34em; margin: 0 0 32px; }
+    .soon-pill[hidden] { display: none; }
+    .soon-pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--red-2); }
+    .empty { color: var(--muted); padding: 40px 0; text-align: center; }
 
-    .teasers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0 0 36px; }
-    .teaser {
-      background: linear-gradient(180deg, var(--card), #141417);
-      border: 1px solid var(--line); border-radius: 14px; padding: 18px;
+    /* CART BAR + DRAWER */
+    .cartbar {
+      position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 30;
+      width: min(680px, calc(100% - 32px));
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 12px 12px 12px 18px; border-radius: 16px;
+      background: rgba(26, 26, 31, .96); backdrop-filter: blur(10px);
+      border: 1px solid var(--red-deep); box-shadow: 0 10px 40px rgba(0, 0, 0, .6);
     }
-    .teaser svg { width: 28px; height: 28px; color: var(--red-2); margin-bottom: 10px; }
-    .teaser strong { display: block; font-size: 16px; }
-    .teaser span { color: var(--muted); font-size: 14px; }
-
-    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .cartbar[hidden] { display: none; }
+    .cartbar small { color: var(--red-2); text-transform: uppercase; letter-spacing: 1.5px; font-size: 11px; font-weight: 600; }
+    .cartbar p { margin: 0; font-weight: 600; }
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 14px 22px; border-radius: 12px; border: 1px solid transparent;
-      font: 600 16px Inter, sans-serif; text-decoration: none;
-      transition: background .15s ease, border-color .15s ease;
+      padding: 13px 20px; border-radius: 12px; border: 1px solid transparent;
+      font: 600 16px Inter, sans-serif; text-decoration: none; cursor: pointer; white-space: nowrap;
     }
     .btn.primary { background: var(--red); color: #fff; }
     .btn.primary:hover { background: var(--red-2); }
-    .btn.ghost { border-color: var(--line); }
+    .btn.ghost { background: transparent; border-color: var(--line); }
     .btn.ghost:hover { border-color: var(--red); }
-    .btn:focus-visible { outline: 2px solid var(--red-2); outline-offset: 2px; }
+    .btn:focus-visible, .add:focus-visible, .cats button:focus-visible, .qty button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--red-2); outline-offset: 2px; }
 
-    footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; text-align: center; }
+    dialog {
+      width: min(560px, 100%); max-height: min(90vh, 860px); margin: auto 0 0 auto; height: 100%;
+      padding: 0; border: 0; border-left: 1px solid var(--line);
+      background: var(--bg); color: var(--text);
+    }
+    dialog::backdrop { background: rgba(0, 0, 0, .65); }
+    @media (min-width: 600px) { dialog { max-height: 100vh; } }
+    .drawer { display: flex; flex-direction: column; height: 100%; }
+    .drawer-head { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; border-bottom: 1px solid var(--line); }
+    .drawer-head h2 { font-family: Anton, sans-serif; font-weight: 400; font-size: 28px; margin: 0; letter-spacing: .5px; }
+    .close { background: none; border: 1px solid var(--line); border-radius: 10px; width: 38px; height: 38px; font-size: 20px; cursor: pointer; }
+    .drawer-body { flex: 1; overflow-y: auto; padding: 8px 20px 20px; }
+    .line { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .line strong { display: block; font-size: 15px; }
+    .line small { color: var(--muted); }
+    .fields { display: grid; gap: 12px; margin-top: 18px; }
+    .fields label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--muted); font-weight: 500; }
+    .fields input, .fields select {
+      background: var(--bg-2); border: 1px solid var(--line); color: var(--text);
+      border-radius: 10px; padding: 12px 13px; font: 16px Inter, sans-serif;
+    }
+    .note { color: var(--muted); font-size: 13px; margin: 14px 0 0; }
+    .drawer-foot { padding: 16px 20px; border-top: 1px solid var(--line); display: grid; gap: 10px; }
+    .totals { display: flex; justify-content: space-between; font-weight: 600; }
+    .totals span:last-child { font-variant-numeric: tabular-nums; }
+    .error { color: var(--red-2); font-size: 14px; margin: 0; min-height: 1em; }
+
+    footer { margin-top: 64px; color: var(--muted); font-size: 14px; text-align: center; }
     footer strong { color: var(--text); }
     .credit { margin-top: 14px; font-size: 13px; letter-spacing: .5px; }
     .credit a { color: var(--text); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--red); padding-bottom: 1px; }
     .credit a:hover { color: var(--red-2); }
 
-    @media (max-width: 640px) {
-      .teasers { grid-template-columns: 1fr; }
-      .btn { flex: 1 1 100%; }
+    @media (max-width: 560px) {
+      .brand small { display: none; }
+      .lede { font-size: 16px; }
+      .kit .btn { width: 100%; }
+      .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .card { padding: 14px; }
+      .card h3 { font-size: 15px; }
+      .card p { font-size: 13px; }
+      .card-foot { flex-direction: column; align-items: stretch; }
+      .card .add, .card .qty { width: 100%; justify-content: space-between; }
+      .card .qty span { flex: 1; }
+      .line .qty { flex: none; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <a class="brand" href="https://clocutz.org/">CLO<span>CUTZ</span></a>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="https://shop.clocutz.org/">CLO<span>CUTZ</span><small>Barber Supply</small></a>
+      <nav class="nav-links">
+        <a href="https://clocutz.org/">Book a cut</a>
+        <a href="https://wa.me/237678625055" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <span class="pill"><i></i>Online store</span>
-    <h1>COMING<br /><em>SOON.</em></h1>
-    <p class="lede">The official Clocutz store is on its way: merch to rep the 120-hour record attempt and the grooming products Ola Clovis trusts in the chair.</p>
+  <main class="wrap">
+    <section class="hero">
+      <span class="soon-pill" id="soonPill" hidden><i></i>Coming soon</span>
+      <span class="eyebrow">Barber supply · Buea</span>
+      <h1>EQUIP YOUR<br /><em>BARBERSHOP.</em></h1>
+      <p class="lede">Clippers, blades, disinfectants, capes and finishing products, picked by Ola Clovis from what a working barbershop in Cameroon actually uses every day.</p>
+      <ul class="perks">
+        <li><b>Pickup</b> at Clocutz Magic Touch, Buea</li>
+        <li><b>Delivery</b> across Cameroon</li>
+        <li><b>Pay</b> with MTN MoMo, Orange Money or cash</li>
+      </ul>
+    </section>
 
-    <div class="teasers">
-      <div class="teaser">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3l5 3-2 4-2-1v12H7V9L5 10 3 6l5-3a4 4 0 0 0 8 0z"/></svg>
-        <strong>Merch</strong>
-        <span>Tees and caps from the marathon</span>
+    <section class="kit">
+      <div>
+        <h2 id="kitTitle">Opening a new shop?</h2>
+        <p id="kitText">Add our <strong>starter kit</strong> in one tap: the essentials every barbershop needs on day one, from clippers and blades to Barbicide, capes and aftershave.</p>
       </div>
-      <div class="teaser">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6v4H9z"/><path d="M8 7h8l1 4v9a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-9z"/><path d="M10 14h4"/></svg>
-        <strong>Grooming</strong>
-        <span>Hair and beard care</span>
-      </div>
-      <div class="teaser">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg>
-        <strong>Tools</strong>
-        <span>Barber kit picks</span>
-      </div>
+      <button type="button" class="btn primary" id="addKit">Add starter kit</button>
+    </section>
+
+    <div class="toolbar">
+      <input class="search" id="search" type="search" placeholder="Search clippers, blades, aftershave…" aria-label="Search products" />
+      <div class="cats" id="cats" role="toolbar" aria-label="Categories"></div>
     </div>
 
-    <div class="cta-row">
-      <a class="btn primary" href="https://clocutz.org/#book">Book a haircut</a>
-      <a class="btn ghost" href="https://wa.me/237678625055" target="_blank" rel="noopener">Ask us on WhatsApp</a>
-    </div>
+    <div id="catalogue"></div>
+
+    <footer>
+      <p>Can't find something? <a href="https://wa.me/237678625055" target="_blank" rel="noopener">Ask us on WhatsApp</a>. We source for barbers across Cameroon.</p>
+      <p>Follow <strong>@Clocutz</strong> on Facebook, Instagram, TikTok &amp; YouTube.</p>
+      <p class="credit">Powered by <a href="https://hartsdigitalhub.com/" target="_blank" rel="noopener">h@rts</a></p>
+    </footer>
   </main>
 
-  <footer>
-    <p>Follow <strong>@Clocutz</strong> on Facebook, Instagram, TikTok &amp; YouTube to hear when the store opens.</p>
-    <p class="credit">Powered by <a href="https://hartsdigitalhub.com/" target="_blank" rel="noopener">h@rts</a></p>
-  </footer>
+  <div class="cartbar" id="cartbar" hidden>
+    <div>
+      <small>Your order</small>
+      <p id="cartSummary">0 items</p>
+    </div>
+    <button type="button" class="btn primary" id="openCart">View order</button>
+  </div>
+
+  <dialog id="cart" aria-labelledby="cartTitle">
+    <form class="drawer" id="orderForm" method="dialog" novalidate>
+      <div class="drawer-head">
+        <h2 id="cartTitle">Your order</h2>
+        <button type="button" class="close" id="closeCart" aria-label="Close">×</button>
+      </div>
+      <div class="drawer-body">
+        <div id="cartLines"></div>
+        <div class="fields">
+          <label>Full name
+            <input id="oName" autocomplete="name" placeholder="e.g. Ngwa Brandon" required />
+          </label>
+          <label>Phone / WhatsApp
+            <input id="oPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="6XX XXX XXX" required />
+          </label>
+          <label>How do you want it?
+            <select id="oMethod">
+              <option value="Pickup at Clocutz Magic Touch, Buea">Pickup at the shop in Buea</option>
+              <option value="Delivery">Delivery</option>
+            </select>
+          </label>
+          <label id="townWrap" hidden>Town / neighbourhood for delivery
+            <input id="oTown" placeholder="e.g. Molyko, Buea or Bonamoussadi, Douala" />
+          </label>
+        </div>
+        <p class="note">We'll reply on WhatsApp to confirm stock, the final price and delivery cost, then you pay by MoMo, Orange Money or cash.</p>
+      </div>
+      <div class="drawer-foot">
+        <div class="totals"><span>Estimated total</span><span id="total">—</span></div>
+        <p class="error" id="orderError" role="alert"></p>
+        <button type="submit" class="btn primary" id="sendOrder">Send order on WhatsApp</button>
+        <button type="button" class="btn ghost" id="clearCart">Clear order</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+    /* ===== Shop settings — edit products and prices here ===== */
+    const WHATSAPP = "237678625055";
+
+    // true = catalogue is a preview: no basket or ordering, items show "Coming soon".
+    // Set to false on launch day (and update the <title> and og:title at the top).
+    const COMING_SOON = true;
+
+    // price: number in FCFA, or null to show "Ask for price".
+    // kit: true = included in the "starter kit" button.
+    const PRODUCTS = [
+      // Clippers & trimmers
+      { id: "clipper-cordless", cat: "clippers", name: "Professional cordless clipper", desc: "Rechargeable, so it keeps cutting through power cuts. Fades and bulk cutting.", price: null, kit: true, badge: "Best seller" },
+      { id: "clipper-corded", cat: "clippers", name: "Heavy-duty corded clipper", desc: "Strong motor for all-day cutting on thick hair.", price: null },
+      { id: "trimmer", cat: "clippers", name: "Outliner / edge trimmer", desc: "Sharp lines, hairline and beard shaping.", price: null, kit: true },
+      { id: "shaver", cat: "clippers", name: "Foil shaver", desc: "Smooth, close finish for bald fades and clean shaves.", price: null },
+      { id: "guards", cat: "clippers", name: "Clipper guard set (1–8)", desc: "Replacement attachment combs for most clippers.", price: null, kit: true },
+      { id: "blade-set", cat: "clippers", name: "Replacement clipper blade", desc: "Fresh blade to restore cutting power.", price: null },
+      { id: "clipper-oil", cat: "clippers", name: "Clipper oil", desc: "Keeps blades cool, sharp and quiet.", price: null, kit: true },
+
+      // Razors & blades
+      { id: "shavette", cat: "razors", name: "Straight razor (shavette)", desc: "Takes single-edge blades. For lining and neck shaves.", price: null, kit: true },
+      { id: "blades-100", cat: "razors", name: "Double-edge razor blades, 100", desc: "One fresh blade per client, every time.", price: null, kit: true, badge: "Essential" },
+      { id: "scissors", cat: "razors", name: "Barber scissors", desc: "Stainless steel cutting shears.", price: null },
+      { id: "thinning", cat: "razors", name: "Thinning scissors", desc: "Blend and remove bulk.", price: null },
+
+      // Hygiene & safety
+      { id: "barbicide", cat: "hygiene", name: "Barbicide disinfectant + jar", desc: "Soak combs and tools between clients.", price: null, kit: true, badge: "Essential" },
+      { id: "clipper-spray", cat: "hygiene", name: "Clipper spray (cool, clean, lube)", desc: "Disinfects and cools blades in seconds.", price: null, kit: true },
+      { id: "spirit", cat: "hygiene", name: "Methylated spirit, 1 L", desc: "Wipe down clippers, chairs and surfaces.", price: null, kit: true },
+      { id: "uv-box", cat: "hygiene", name: "UV sterilizer cabinet", desc: "Store and sterilize tools between cuts.", price: null },
+      { id: "neck-strips", cat: "hygiene", name: "Neck strips, 5 rolls", desc: "Keeps capes clean and clients comfortable.", price: null, kit: true },
+      { id: "gloves", cat: "hygiene", name: "Disposable gloves, box", desc: "For shaves, dye and treatments.", price: null },
+      { id: "sprayer", cat: "hygiene", name: "Water spray bottle", desc: "Fine mist for damping hair.", price: null, kit: true },
+
+      // Aftershave & finishing
+      { id: "aftershave", cat: "finishing", name: "Aftershave lotion", desc: "Classic alcohol-based tonic to soothe and protect after a shave.", price: null, kit: true, badge: "Best seller" },
+      { id: "shave-gel", cat: "finishing", name: "Clear shaving gel", desc: "See your lines while you shave.", price: null, kit: true },
+      { id: "powder", cat: "finishing", name: "Talc powder", desc: "Dries the neck and finishes the cut.", price: null, kit: true },
+      { id: "hair-dye", cat: "finishing", name: "Black hair & beard dye", desc: "Deep, even black for hair and beards.", price: null },
+      { id: "beard-oil", cat: "finishing", name: "Beard & scalp oil", desc: "Moisturizes after cutting.", price: null },
+      { id: "pomade", cat: "finishing", name: "Wave pomade", desc: "Hold and shine for 360 waves.", price: null },
+
+      // Combs, brushes & accessories
+      { id: "combs", cat: "accessories", name: "Barber comb set", desc: "Taper, wide-tooth and detail combs.", price: null, kit: true },
+      { id: "neck-duster", cat: "accessories", name: "Neck duster brush", desc: "Soft bristles to sweep away cut hair.", price: null, kit: true },
+      { id: "wave-brush", cat: "accessories", name: "Wave brush", desc: "Firm bristles for training waves.", price: null },
+      { id: "twist-sponge", cat: "accessories", name: "Curl / twist sponge", desc: "Quick twists and curls on short hair.", price: null },
+      { id: "durag", cat: "accessories", name: "Durag", desc: "Locks in waves after brushing.", price: null },
+
+      // Shop equipment
+      { id: "cape", cat: "equipment", name: "Barber cape", desc: "Waterproof, with a snap neck.", price: null, kit: true },
+      { id: "apron", cat: "equipment", name: "Barber apron", desc: "Pockets for combs and clips.", price: null },
+      { id: "mirror", cat: "equipment", name: "Hand mirror", desc: "Show clients the back of the cut.", price: null, kit: true },
+      { id: "towels", cat: "equipment", name: "Towels, pack of 6", desc: "For hot towel shaves and clean-up.", price: null },
+      { id: "stabilizer", cat: "equipment", name: "Voltage stabilizer", desc: "Protects clippers and chargers from power surges.", price: null },
+      { id: "charging-dock", cat: "equipment", name: "Clipper charging stand", desc: "Keeps cordless tools charged and organised.", price: null },
+      { id: "chair", cat: "equipment", name: "Hydraulic barber chair", desc: "Reclining, height adjustable. Delivery quoted separately.", price: null },
+    ];
+
+    const CATEGORIES = [
+      { id: "all", label: "All" },
+      { id: "clippers", label: "Clippers & trimmers" },
+      { id: "razors", label: "Razors & scissors" },
+      { id: "hygiene", label: "Hygiene" },
+      { id: "finishing", label: "Aftershave & finishing" },
+      { id: "accessories", label: "Combs & brushes" },
+      { id: "equipment", label: "Shop equipment" },
+    ];
+    /* ========================================================= */
+
+    const ICONS = {
+      clippers: '<path d="M8 2h8v6l-1 2v11a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V10L8 8z"/><path d="M8 4h8M11 14h2"/>',
+      razors: '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/>',
+      hygiene: '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M12 11v6M9 14h6"/>',
+      finishing: '<path d="M9 3h6v4H9z"/><path d="M8 7h8l1 4v9a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-9z"/><path d="M10 14h4"/>',
+      accessories: '<path d="M3 8h18v4H3z"/><path d="M5 12v6M8 12v6M11 12v6M14 12v6M17 12v6M20 12v6"/>',
+      equipment: '<path d="M6 4h12v6H6z"/><path d="M4 10h16v3H4zM12 13v6M8 21h8"/>',
+    };
+    const icon = (cat) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[cat]}</svg>`;
+
+    const $ = (id) => document.getElementById(id);
+    const fcfa = (n) => n.toLocaleString("fr-FR").replace(/ | /g, " ") + " FCFA";
+    const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+    const STORE_KEY = "clocutz-shop-cart";
+    let cart = {};
+    try { cart = JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch {}
+    for (const id of Object.keys(cart)) if (!PRODUCTS.some((p) => p.id === id)) delete cart[id];
+    const save = () => { try { localStorage.setItem(STORE_KEY, JSON.stringify(cart)); } catch {} };
+
+    let activeCat = "all";
+    let query = "";
+
+    function renderCats() {
+      $("cats").innerHTML = CATEGORIES.map(
+        (c) => `<button type="button" data-cat="${c.id}" aria-pressed="${c.id === activeCat}">${c.label}</button>`
+      ).join("");
+    }
+
+    function controlFor(p) {
+      if (COMING_SOON) return `<span class="soon-tag">Coming soon</span>`;
+      const q = cart[p.id] || 0;
+      if (!q) return `<button type="button" class="add" data-add="${p.id}">Add</button>`;
+      return `<div class="qty"><button type="button" data-dec="${p.id}" aria-label="Remove one ${esc(p.name)}">−</button><span aria-live="polite">${q}</span><button type="button" data-inc="${p.id}" aria-label="Add one ${esc(p.name)}">+</button></div>`;
+    }
+
+    function card(p) {
+      const price = COMING_SOON ? "" : p.price != null ? `<span class="price">${fcfa(p.price)}</span>` : `<span class="price ask">Ask for price</span>`;
+      return `<article class="card">
+        <div class="icon">${icon(p.cat)}</div>
+        ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
+        <h3>${esc(p.name)}</h3>
+        <p>${esc(p.desc)}</p>
+        <div class="card-foot">${price}<span data-ctrl="${p.id}">${controlFor(p)}</span></div>
+      </article>`;
+    }
+
+    function renderCatalogue() {
+      const q = query.trim().toLowerCase();
+      const match = (p) => (activeCat === "all" || p.cat === activeCat) && (!q || (p.name + " " + p.desc).toLowerCase().includes(q));
+      const cats = CATEGORIES.filter((c) => c.id !== "all");
+      let html = "";
+      for (const c of cats) {
+        const items = PRODUCTS.filter((p) => p.cat === c.id && match(p));
+        if (!items.length) continue;
+        html += `<h2 class="section-title">${c.label}</h2><div class="grid">${items.map(card).join("")}</div>`;
+      }
+      $("catalogue").innerHTML = html || `<p class="empty">Nothing matches "${esc(query)}". <a href="https://wa.me/${WHATSAPP}" target="_blank" rel="noopener">Ask us on WhatsApp</a> and we'll find it.</p>`;
+    }
+
+    function refreshControls() {
+      document.querySelectorAll("[data-ctrl]").forEach((el) => {
+        const p = PRODUCTS.find((x) => x.id === el.dataset.ctrl);
+        el.innerHTML = controlFor(p);
+      });
+    }
+
+    const lines = () => PRODUCTS.filter((p) => cart[p.id]).map((p) => ({ p, q: cart[p.id] }));
+    const count = () => lines().reduce((n, l) => n + l.q, 0);
+
+    function totalText() {
+      const ls = lines();
+      const priced = ls.filter((l) => l.p.price != null);
+      const sum = priced.reduce((n, l) => n + l.p.price * l.q, 0);
+      if (!priced.length) return "Confirmed on WhatsApp";
+      return fcfa(sum) + (priced.length < ls.length ? " + items to price" : "");
+    }
+
+    function renderCartBar() {
+      const n = count();
+      $("cartbar").hidden = COMING_SOON || n === 0;
+      $("cartSummary").textContent = `${n} item${n === 1 ? "" : "s"} · ${lines().length} product${lines().length === 1 ? "" : "s"}`;
+    }
+
+    function renderCartLines() {
+      const ls = lines();
+      $("cartLines").innerHTML = ls.length
+        ? ls.map(({ p, q }) => `<div class="line"><div><strong>${esc(p.name)}</strong><small>${p.price != null ? fcfa(p.price) + " each" : "Ask for price"}</small></div><div class="qty"><button type="button" data-dec="${p.id}" aria-label="Remove one ${esc(p.name)}">−</button><span>${q}</span><button type="button" data-inc="${p.id}" aria-label="Add one ${esc(p.name)}">+</button></div></div>`).join("")
+        : `<p class="empty">Your order is empty.</p>`;
+      $("total").textContent = ls.length ? totalText() : "—";
+      $("sendOrder").disabled = !ls.length;
+    }
+
+    function setQty(id, q) {
+      if (q > 0) cart[id] = Math.min(q, 99); else delete cart[id];
+      save();
+      refreshControls();
+      renderCartBar();
+      renderCartLines();
+      if (!count() && $("cart").open) $("cart").close();
+    }
+
+    document.addEventListener("click", (e) => {
+      const t = e.target.closest("button");
+      if (!t) return;
+      if (t.dataset.add) setQty(t.dataset.add, 1);
+      else if (t.dataset.inc) setQty(t.dataset.inc, (cart[t.dataset.inc] || 0) + 1);
+      else if (t.dataset.dec) setQty(t.dataset.dec, (cart[t.dataset.dec] || 0) - 1);
+      else if (t.dataset.cat) { activeCat = t.dataset.cat; renderCats(); renderCatalogue(); }
+    });
+
+    $("search").addEventListener("input", (e) => { query = e.target.value; renderCatalogue(); });
+
+    $("addKit").addEventListener("click", () => {
+      if (COMING_SOON) {
+        const msg = "Hello Clocutz! Please let me know when the barber supply shop opens.";
+        window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
+        return;
+      }
+      for (const p of PRODUCTS) if (p.kit && !cart[p.id]) cart[p.id] = 1;
+      setQty("__none__", 0);
+      openCart();
+    });
+
+    function openCart() { renderCartLines(); $("cart").showModal(); }
+    $("openCart").addEventListener("click", openCart);
+    $("closeCart").addEventListener("click", () => $("cart").close());
+    $("cart").addEventListener("click", (e) => { if (e.target === $("cart")) $("cart").close(); });
+    $("clearCart").addEventListener("click", () => { cart = {}; setQty("__none__", 0); });
+
+    $("oMethod").addEventListener("change", (e) => { $("townWrap").hidden = e.target.value !== "Delivery"; });
+
+    $("orderForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = $("oName").value.trim();
+      const phone = $("oPhone").value.trim();
+      const method = $("oMethod").value;
+      const town = $("oTown").value.trim();
+      const err = $("orderError");
+      if (!lines().length) return (err.textContent = "Your order is empty.");
+      if (!name) return (err.textContent = "Please enter your name."), $("oName").focus();
+      if (phone.replace(/\D/g, "").length < 9) return (err.textContent = "Please enter a valid phone number."), $("oPhone").focus();
+      if (method === "Delivery" && !town) return (err.textContent = "Please tell us where to deliver."), $("oTown").focus();
+      err.textContent = "";
+
+      const msg = [
+        "Hello Clocutz! I'd like to order from the barber supply shop:",
+        "",
+        ...lines().map(({ p, q }) => `• ${q} × ${p.name}${p.price != null ? ` (${fcfa(p.price * q)})` : ""}`),
+        "",
+        `Estimated total: ${totalText()}`,
+        `Name: ${name}`,
+        `Phone: ${phone}`,
+        `${method === "Delivery" ? `Delivery to: ${town}` : method}`,
+        "",
+        "Please confirm stock, final price and how to pay.",
+      ].join("\n");
+      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
+    });
+
+    if (COMING_SOON) {
+      $("soonPill").hidden = false;
+      $("kitTitle").textContent = "Opening soon";
+      $("kitText").textContent = "Here's a preview of what we'll stock. Message us on WhatsApp and we'll tell you the moment the shop opens, or ask about anything you need now.";
+      $("addKit").textContent = "Notify me on WhatsApp";
+    }
+
+    renderCats();
+    renderCatalogue();
+    renderCartBar();
+  </script>
 </body>
 </html>
