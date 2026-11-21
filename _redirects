@@ -1,2 +1,6 @@
+# Send the default Netlify address to the real domain.
+# (Deploy previews use other *.netlify.app hostnames, so they still work.)
+https://clocutz01.netlify.app/*  https://clocutz.org/:splat  301!
+
 # Serve the /shop folder at shop.clocutz.org (same Netlify site, domain alias).
 https://shop.clocutz.org/*  /shop/:splat  200!
