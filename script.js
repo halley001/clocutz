@@ -3,7 +3,9 @@ const CONFIG = {
   // When the 120-hour clock started, in Cameroon time (WAT = UTC+1).
   // ASSUMPTION: 08:00 WAT on Nov 17 2026. Ask the team and update if different.
   startWAT: { year: 2026, month: 11, day: 17, hour: 8, minute: 0 },
-  durationHours: 120,
+  // When the site stops taking requests and shows "COMPLETED", in Cameroon time.
+  // Set to the end of Nov 22 (the flyer's last day). Move it if the attempt runs longer.
+  endWAT: { year: 2026, month: 11, day: 23, hour: 0, minute: 0 },
   slotMinutes: 30,
   // Don't allow booking a slot that starts less than this many minutes from now.
   leadMinutes: 10,
@@ -17,7 +19,8 @@ const HOUR = 3600e3;
 const MIN = 60e3;
 const s = CONFIG.startWAT;
 const START = Date.UTC(s.year, s.month - 1, s.day, s.hour - 1, s.minute); // WAT -> UTC
-const END = START + CONFIG.durationHours * HOUR;
+const e = CONFIG.endWAT;
+const END = Date.UTC(e.year, e.month - 1, e.day, e.hour - 1, e.minute); // WAT -> UTC
 
 // Optional ?now=2026-11-20T14:00:00+01:00 to preview the site at another moment.
 const nowOverride = (() => {
