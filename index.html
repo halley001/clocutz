@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Clocutz 120 Hours — Get Your Cut</title>
-  <meta name="description" content="Ask for a haircut during the Clocutz 120-hour longest hairdressing marathon record attempt, Nov 17–22 2026, Molyko Stadium, Buea." />
+  <title>Clocutz 120 Hours — Record Attempt</title>
+  <meta name="description" content="The Clocutz 120-hour longest professional hairdressing marathon record attempt by Ola Clovis, Nov 17–22 2026, Molyko Stadium, Buea." />
   <link rel="canonical" href="https://clocutz.org/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Clocutz" />
   <meta property="og:url" content="https://clocutz.org/" />
-  <meta property="og:title" content="Clocutz 120 Hours — Get Your Cut" />
-  <meta property="og:description" content="Be part of history. Get your haircut during the 120-hour record attempt at Molyko Stadium, Buea." />
+  <meta property="og:title" content="Clocutz 120 Hours — Record Attempt" />
+  <meta property="og:description" content="Ola Clovis took on the 120-hour hairdressing marathon record attempt at Molyko Stadium, Buea, Nov 17–22 2026." />
   <meta property="og:image" content="https://clocutz.org/assets/flyer.jpg" />
   <meta property="og:image:width" content="1080" />
   <meta property="og:image:height" content="1286" />
   <meta property="og:image:alt" content="Clocutz 120 hours record attempt flyer, Nov 17–22 2026, Molyko Stadium, Buea" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Clocutz 120 Hours — Get Your Cut" />
-  <meta name="twitter:description" content="Be part of history. Get your haircut during the 120-hour record attempt at Molyko Stadium, Buea." />
+  <meta name="twitter:title" content="Clocutz 120 Hours — Record Attempt" />
+  <meta name="twitter:description" content="Ola Clovis took on the 120-hour hairdressing marathon record attempt at Molyko Stadium, Buea, Nov 17–22 2026." />
   <meta name="twitter:image" content="https://clocutz.org/assets/flyer.jpg" />
   <meta name="theme-color" content="#0b0b0d" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -31,7 +31,6 @@
   <header class="nav">
     <a href="#top" class="brand">CLO<span>CUTZ</span></a>
     <nav>
-      <a href="#book">Book</a>
       <a href="#event">Event</a>
       <a href="https://shop.clocutz.org/">Shop</a>
       <a href="#contact">Contact</a>
@@ -42,12 +41,12 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-text">
-        <span class="live-pill" id="livePill"><i></i><b id="liveLabel">LIVE NOW</b></span>
+        <span class="live-pill off"><i></i><b>EVENT ENDED · NOV 17–22</b></span>
         <h1>120 HOURS<br /><em>ONE CHAIR.</em></h1>
-        <p class="lede">Ola Clovis is attempting the record for the <strong>longest professional hairdressing marathon</strong>. Every haircut keeps the clock running — ask for a slot and be part of history.</p>
+        <p class="lede">Ola Clovis took on the record attempt for the <strong>longest professional hairdressing marathon</strong> at Molyko Stadium, Buea. Thank you to everyone who came out, sat in the chair and cheered him on.</p>
 
         <div class="cta-row">
-          <a href="#book" class="btn primary">Ask for a haircut</a>
+          <a href="#shop" class="btn primary">Visit the barbershop</a>
           <a href="#event" class="btn ghost">Event details</a>
         </div>
       </div>
@@ -62,52 +61,6 @@
       <div class="fact"><small>Where</small><strong>Molyko Stadium</strong><span>Buea, Cameroon</span></div>
       <div class="fact"><small>Who</small><strong>Ola Clovis</strong><span>@Clocutz</span></div>
       <div class="fact"><small>Goal</small><strong>120 hours</strong><span>Longest hairdressing marathon</span></div>
-    </section>
-
-    <!-- BOOKING -->
-    <section class="booking" id="book">
-      <div class="section-head">
-        <h2>Ask for a slot</h2>
-        <p>Pick the day and time that suit you, and send your request to the Clocutz team on WhatsApp. <strong>This doesn't reserve a slot</strong>: the team will reply to let you know what's available.</p>
-      </div>
-
-      <form id="bookingForm" novalidate>
-        <div class="step">
-          <h3><span>1</span> Preferred day</h3>
-          <div class="days" id="days" role="radiogroup" aria-label="Day"></div>
-        </div>
-
-        <div class="step">
-          <h3><span>2</span> Preferred time</h3>
-          <div class="period-tabs" id="periodTabs" role="tablist"></div>
-          <div class="slots" id="slots" role="radiogroup" aria-label="Time slot"></div>
-          <p class="hint" id="slotHint"></p>
-        </div>
-
-        <div class="step">
-          <h3><span>3</span> Your details</h3>
-          <div class="fields">
-            <label>Full name
-              <input type="text" id="name" autocomplete="name" placeholder="e.g. Ngwa Brandon" required />
-            </label>
-            <label>Phone / WhatsApp
-              <input type="tel" id="phone" autocomplete="tel" inputmode="tel" placeholder="6XX XXX XXX" required />
-            </label>
-            <label class="full">Note for the barber <em>(optional)</em>
-              <input type="text" id="note" maxlength="140" placeholder="e.g. Low fade, keep the beard" />
-            </label>
-          </div>
-        </div>
-
-        <aside class="summary" id="summary">
-          <div>
-            <small>Your request</small>
-            <p id="summaryText">Pick a day and a time.</p>
-          </div>
-          <button type="submit" class="btn primary" id="submitBtn" disabled>Ask on WhatsApp</button>
-        </aside>
-        <p class="error" id="formError" role="alert"></p>
-      </form>
     </section>
 
     <!-- THE SHOP -->
@@ -135,7 +88,7 @@
     <!-- CONTACT -->
     <section class="contact" id="contact">
       <div>
-        <h2>Partner, sponsor, or just show up</h2>
+        <h2>Partner with Clocutz</h2>
         <p>For partnership, sponsorship and more info, reach the Clocutz team.</p>
       </div>
       <div class="contact-links">
@@ -147,11 +100,10 @@
   </main>
 
   <footer>
-    <p>Follow <strong>@Clocutz</strong> on Facebook, Instagram, TikTok &amp; YouTube for live updates.</p>
-    <p class="fine">Made by h@rts in support of the Clocutz 120-hour record attempt. Requests go straight to Clocutz on WhatsApp, and nothing is booked until they reply.</p>
+    <p>Follow <a href="https://x.com/clocutz" target="_blank" rel="noopener"><strong>@clocutz</strong> on X</a>, and @Clocutz on Facebook, Instagram, TikTok &amp; YouTube, for updates.</p>
+    <p class="fine">Made by h@rts in support of the Clocutz 120-hour record attempt.</p>
     <p class="credit">Powered by <a href="https://hartsdigitalhub.com/" target="_blank" rel="noopener">h@rts</a></p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>

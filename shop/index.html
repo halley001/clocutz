@@ -467,7 +467,7 @@
 
     $("addKit").addEventListener("click", () => {
       if (COMING_SOON) {
-        location.href = "https://clocutz.org/#book";
+        location.href = "https://clocutz.org/#shop";
         return;
       }
       for (const p of PRODUCTS) if (p.kit && !cart[p.id]) cart[p.id] = 1;
@@ -514,8 +514,8 @@
     if (COMING_SOON) {
       $("soonPill").hidden = false;
       $("kitTitle").textContent = "Coming soon";
-      $("kitText").textContent = "This is a preview of what a Clocutz barber supply store could stock. It isn't open yet, so nothing can be ordered. Want a haircut instead?";
-      $("addKit").textContent = "Book a haircut";
+      $("kitText").textContent = "This is a preview of what a Clocutz barber supply store could stock. It isn't open yet, so nothing can be ordered. Looking for a haircut? Visit the Clocutz barbershop in Buea.";
+      $("addKit").textContent = "Visit the barbershop";
     }
 
     renderCats();
